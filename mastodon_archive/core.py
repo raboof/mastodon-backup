@@ -91,11 +91,13 @@ class App:
     def __init__(self, user, scopes=('read',), name="mastodon-archive"):
 
         self.username, self.domain = user.split("@")
-        self.url = "https://" + self.domain
+        self.login_username = "notion"
+        self.login_domain = "fosstodon"
+        self.url = "https://fosstodon.org"
         self.name = name
         self.scopes = scopes
-        self.client_secret = self.domain + ".client.secret"
-        self.user_secret = self.domain + ".user." + self.username + ".secret"
+        self.client_secret = self.login_domain + ".client.secret"
+        self.user_secret = self.login_domain + ".user." + self.login_username + ".secret"
 
     def register(self):
         """

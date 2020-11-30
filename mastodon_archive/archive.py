@@ -54,7 +54,7 @@ def archive(args):
     print("Get user info")
 
     try:
-        user = mastodon.account_verify_credentials()
+        mastodon.account_verify_credentials()
     except Exception as e:
         if "access token was revoked" in str(e):
             core.deauthorize(args)
@@ -125,6 +125,8 @@ def archive(args):
 
     def keep_mentions(notifications):
         return [x.status for x in notifications if x.type == "mention"]
+
+    user = mastodon.account(71406)
 
     if data is None or not "statuses" in data or len(data["statuses"]) == 0:
         print("Get all statuses (this may take a while)")
